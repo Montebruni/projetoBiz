@@ -35,7 +35,7 @@ module.exports.criar = async (dados) => {
 	const novoCliente = JSON.parse(dados);
 
 	if (Array.isArray(novoCliente)) {
-		throw new Error('O body não pode ser um Array');
+		throw new Error('O body da requisição não pode ser um Array');
 	}
 
 	if (!novoCliente.nome) {
