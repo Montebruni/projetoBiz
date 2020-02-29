@@ -2,65 +2,65 @@
 
 const fs = require('fs');
 
-async function salvarArquivoJson(dados, nomeArquivo='clientes', utf='utf8') {
+async function salvarArquivoJson(dados, nomeArquivo='usuarios', utf='utf8') {
 	fs.writeFileSync(`${nomeArquivo}.json`, JSON.stringify(dados), utf);
 }
 
-async function verificarArquivoClientes(nomeArquivo='clientes', utf='utf8') {
+async function verificarArquivoUsuarios(nomeArquivo='usuarios', utf='utf8') {
 	if (!fs.existsSync(`${nomeArquivo}.json`)) {
 		await salvarArquivoJson([], nomeArquivo, utf);
 	}
 }
 
-async function obterClientesFromJsonFile(nomeArquivo='clientes', utf='utf8') {
-	await verificarArquivoClientes();
-  const clientes = await JSON.parse(fs.readFileSync(`${nomeArquivo}.json`, utf));
+async function obterUsuariosFromJsonFile(nomeArquivo='usuarios', utf='utf8') {
+	await verificarArquivoUsuarios();
+  const usuarios = await JSON.parse(fs.readFileSync(`${nomeArquivo}.json`, utf));
 
-	if (!Array.isArray(clientes)) {
-		throw new Error('O arquivo de clientes deveria conter um array.');
+	if (!Array.isArray(usuarios)) {
+		throw new Error('O arquivo de usuários deveria conter um array.');
 	}
 
-	return clientes;
+	return usuarios;
 }
 
 module.exports.obter = async (id) => {
-	const clientes = await obterClientesFromJsonFile();
+	const usuarios = await obterUsuariosFromJsonFile();
 
-	return clientes.find(c => Number(c.id) === Number(id)) || [];
+	return usuarios.find(c => Number(c.id) === Number(id)) || [];
 };
 
-module.exports.obterTodos = async () => obterClientesFromJsonFile() || [];
+module.exports.obterTodos = async () => obterUsuariosFromJsonFile() || [];
 
 module.exports.criar = async (dados) => {
-	const novoCliente = JSON.parse(dados);
+	const novoUsuario = JSON.parse(dados);
 
-	if (Array.isArray(novoCliente)) {
+	if (Array.isArray(novoUsuario)) {
 		throw new Error('O body da requisição não pode ser um Array');
 	}
 
-	if (!novoCliente.nome) {
+	if (!novoUsuario.nome) {
 		throw new Error('O parâmetro "nome" é obrigatório no body da requisição.');
 	}
 
-	if (!novoCliente.email) {
+	if (!novoUsuario.email) {
 		throw new Error('O parâmetro email é obrigatório no body da requisição.');
 	}
 
-	const clientes = await obterClientesFromJsonFile();
+	const usuarios = await obterUsuariosFromJsonFile();
 
-	if (clientes.some(c => c.email.toLowerCase() === novoCliente.email.toLowerCase())) {
+	if (usuarios.some(c => c.email.toLowerCase() === novoUsuario.email.toLowerCase())) {
 		throw new Error('O email já foi cadastrado.');
 	}
 
-	novoCliente.id = 1;
+	novoUsuario.id = 1;
 
-	if (clientes.length > 0) {
-		novoCliente.id = clientes[clientes.length - 1].id + 1;
+	if (usuarios.length > 0) {
+		novoUsuario.id = usuarios[usuarios.length - 1].id + 1;
 	}
 
-	clientes.push(novoCliente);
+	usuarios.push(novoUsuario);
 
-	await salvarArquivoJson(clientes);
+	await salvarArquivoJson(usuarios);
 
-	return novoCliente;
+	return novoUsuario;
 };
