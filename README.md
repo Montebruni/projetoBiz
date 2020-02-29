@@ -12,7 +12,8 @@ npm install -g serverless
 
 ### Rodando a aplicação
 - Abra o console na pasta do projeto
-- Digite o comando: npm run offline
+- Digite o comando:
+    - npm run offline
 - Será instalado as dependências que o projeto precisa e iniciado o serverless offline
 
 ### Utilização
