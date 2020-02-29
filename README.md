@@ -27,7 +27,7 @@ GET /usuarios/{id}
 POST /usuarios
  - O body deve ser um json com os parâmetros { "nome": "example", "email": "example@exa.com" }
 
-Para acessar, é necessário passar um token no header do request.
+Para acessar as rotas, é necessário passar um token no header do request.
 
 O token é gerado ao inicar a aplicação, procure no console por algo como abaixo
 
