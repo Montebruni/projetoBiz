@@ -1,6 +1,8 @@
 ### Sobre o projeto
 O projeto é uma api que utiliza o framework serverless.
+
 Possui uma lista de usuários (nome e email) salvos em um arquivo JSON.
+
 Podem ser acessados todos os registros, buscar apenas 1 ou criar um novo.
 
 ### Pré Requisitos ###
@@ -25,8 +27,10 @@ GET /usuarios/{id}
 POST /usuarios
  - O body deve ser um json com os parâmetros { nome: '', email: '' }
 
-Para acessar, é necessário passar um token no header do request
+Para acessar, é necessário passar um token no header do request.
+
 O token é gerado ao inicar a aplicação, procure no console por algo como abaixo
 
 Serverless: Key with token: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
 Serverless: Remember to use x-api-key on the request headers
