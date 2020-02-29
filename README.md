@@ -8,7 +8,7 @@ As rotas permitem buscar por todos os registros, buscar apenas 1 ou criar um nov
 ### Pré Requisitos ###
 É preciso ter o framework Serverless instalado
 
-npm install -g serverless
+- npm install -g serverless
 
 ### Rodando a aplicação
 - Abra o console na pasta do projeto
