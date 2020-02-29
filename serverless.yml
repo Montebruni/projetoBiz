@@ -1,0 +1,32 @@
+service: projeto
+
+provider:
+  name: offline
+  runtime: nodejs12.x
+
+plugins:
+  - serverless-offline
+
+functions:
+  obterTodos:
+    handler: handler.obterTodos
+    events:
+      - http:
+          path: obterTodos
+          method: get
+  obter:
+    handler: handler.obter
+    events:
+      - http: 
+          path: obter/{id}
+          method: get
+          request: 
+            parameters: 
+                paths: 
+                  id: true
+  criar:
+    handler: handler.criar
+    events:
+      - http:
+          path: criar
+          method: post

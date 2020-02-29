@@ -1,0 +1,13 @@
+{
+  "name": "projeto",
+  "version": "1.0.0",
+  "scripts": {
+    "preoffline": "npm install",
+    "offline": "serverless offline start"
+  },
+  "author": "Diego Montebruni",
+  "license": "ISC",
+  "dependencies": {
+    "serverless-offline": "^5.12.1"
+  }
+}
