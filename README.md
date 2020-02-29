@@ -3,7 +3,7 @@ O projeto é uma api que utiliza o framework serverless.
 
 Possui uma lista de usuários (nome e email) salvos em um arquivo JSON.
 
-Podem ser acessados todos os registros, buscar apenas 1 ou criar um novo.
+As rotas permitem buscar por todos os registros, buscar apenas 1 ou criar um novo.
 
 ### Pré Requisitos ###
 É preciso ter o framework Serverless instalado
@@ -25,7 +25,7 @@ GET /usuarios/{id}
  - Retorna um usuário com o id expecífico
 
 POST /usuarios
- - O body deve ser um json com os parâmetros { nome: '', email: '' }
+ - O body deve ser um json com os parâmetros { "nome": "example", "email": "example@exa.com" }
 
 Para acessar, é necessário passar um token no header do request.
 
