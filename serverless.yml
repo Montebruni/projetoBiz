@@ -3,23 +3,25 @@ service: projeto
 provider:
   name: offline
   runtime: nodejs12.x
-
+  apiKeys:
+    - minhaChaveSecreta
 plugins:
   - serverless-offline
-
 functions:
   obterTodos:
     handler: handler.obterTodos
     events:
       - http:
-          path: obterTodos
+          path: usuarios
           method: get
+          private: true
   obter:
     handler: handler.obter
     events:
       - http: 
-          path: obter/{id}
+          path: usuarios/{id}
           method: get
+          private: true
           request: 
             parameters: 
                 paths: 
@@ -28,5 +30,6 @@ functions:
     handler: handler.criar
     events:
       - http:
-          path: criar
+          path: usuarios
           method: post
+          private: true
