@@ -3,7 +3,7 @@
 const fs = require('fs');
 
 async function salvarArquivoJson(dados, nomeArquivo='usuarios', utf='utf8') {
-	fs.writeFileSync(`${nomeArquivo}.json`, JSON.stringify(dados), utf);
+	return fs.writeFileSync(`${nomeArquivo}.json`, JSON.stringify(dados), utf);
 }
 
 async function verificarArquivoUsuarios(nomeArquivo='usuarios', utf='utf8') {
